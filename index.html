@@ -19,10 +19,16 @@
   a:hover { text-decoration: underline; }
   .wrap { width: min(1040px, 100%); margin: 0 auto; padding: 56px 24px 40px; }
   header.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 48px; }
-  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: .02em; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: .02em; white-space: nowrap; }
   .brand .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px #7ee787aa; }
+  .top-right { display: flex; align-items: center; gap: 18px; }
   nav a { color: var(--muted); font-size: 14px; margin-left: 18px; }
   nav a:hover { color: var(--txt); }
+  .lang { display: flex; gap: 2px; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .lang button { background: none; border: 0; color: var(--muted); font: inherit; font-size: 13px; font-weight: 600;
+                 padding: 4px 11px; border-radius: 999px; cursor: pointer; transition: background .15s ease, color .15s ease; }
+  .lang button:hover { background: #14ffffff; color: var(--txt); }
+  .lang button.active { background: #1f6feb4d; color: var(--txt); box-shadow: inset 0 0 0 1px #1f6feb66; }
   .pill { display: inline-block; font-size: 13px; color: var(--green); background: #23863622;
           border: 1px solid #23863666; padding: 4px 12px; border-radius: 999px; }
   h1 { font-size: clamp(30px, 5vw, 46px); line-height: 1.15; margin: 18px 0 10px; letter-spacing: -0.02em; }
@@ -68,8 +74,11 @@
   .btn:hover { background: #2ea043; text-decoration: none; }
   footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted);
            display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
-  ul.plain { color: var(--body); padding-left: 20px; }
-  ul.plain li { margin: 6px 0; }
+  @media (max-width: 760px) {
+    header.top { flex-direction: column; align-items: flex-start; }
+    nav a { margin-left: 0; margin-right: 16px; }
+    .wrap { padding-top: 32px; }
+  }
 </style>
 </head>
 <body>
@@ -77,139 +86,282 @@
 
   <header class="top">
     <div class="brand"><span class="dot"></span> Dexter Eco System</div>
-    <nav>
-      <a href="#how">Как работает</a>
-      <a href="#directions">Направления</a>
-      <a href="#typing">Dexter Typing</a>
-      <a href="#roadmap">Этапы</a>
-      <a href="#contacts">Контакты</a>
-    </nav>
+    <div class="top-right">
+      <nav>
+        <a href="#how" data-i18n="navHow">Как работает</a>
+        <a href="#directions" data-i18n="navDirections">Направления</a>
+        <a href="#typing" data-i18n="navTyping">Dexter Typing</a>
+        <a href="#roadmap" data-i18n="navRoadmap">Этапы</a>
+        <a href="#contacts" data-i18n="navContacts">Контакты</a>
+      </nav>
+      <div class="lang" role="group" aria-label="Language / Язык">
+        <button type="button" data-lang-btn="en" aria-pressed="false">EN</button>
+        <button type="button" data-lang-btn="ru" aria-pressed="true">RU</button>
+      </div>
+    </div>
   </header>
 
-  <span class="pill">DES · Learning &amp; Development Ecosystem</span>
+  <span class="pill" data-i18n="pill">DES · Экосистема обучения и развития</span>
   <h1>Dexter Eco System</h1>
-  <p class="lead">A system for achieving meaningful goals. От цели — к результату через индивидуальную систему развития.</p>
-  <p class="sub">Не каталог курсов, а экосистема, которая связывает цель человека, нужные для неё навыки, его текущий уровень и доступное время — и превращает это в ежедневные действия с измеримым результатом.</p>
+  <p class="lead" data-i18n="lead">От цели — к результату через индивидуальную систему развития.</p>
+  <p class="sub" data-i18n="heroSub">Не каталог курсов, а экосистема, которая связывает цель человека, нужные для неё навыки, его текущий уровень и доступное время — и превращает это в ежедневные действия с измеримым результатом.</p>
 
   <section id="how">
-    <h2>Как работает система</h2>
+    <h2 data-i18n="howH2">Как работает система</h2>
     <div class="steps">
-      <div class="step"><b>Глобальная цель</b><span>Например, получить работу AI Engineer.</span></div>
-      <div class="step"><b>Оценка стартового уровня</b><span>Английский, программирование, AI, математика, опыт.</span></div>
-      <div class="step"><b>Индивидуальная программа</b><span>Курсы, тренажёры, проекты и расписание занятий.</span></div>
-      <div class="step"><b>Ежедневные действия → прогресс → результат</b><span>Регулярная оценка движения к цели показывает, что работает, а что нужно скорректировать.</span></div>
-      <div class="step"><b>В перспективе — ИИ-куратор</b><span>Помогает корректировать программу и поддерживать движение к цели.</span></div>
+      <div class="step"><b data-i18n="s1t">Глобальная цель</b><span data-i18n="s1x">Например, получить работу AI Engineer.</span></div>
+      <div class="step"><b data-i18n="s2t">Оценка стартового уровня</b><span data-i18n="s2x">Английский, программирование, AI, математика, опыт.</span></div>
+      <div class="step"><b data-i18n="s3t">Индивидуальная программа</b><span data-i18n="s3x">Курсы, тренажёры, проекты и расписание занятий.</span></div>
+      <div class="step"><b data-i18n="s4t">Ежедневные действия → прогресс → результат</b><span data-i18n="s4x">Регулярная оценка движения к цели показывает, что работает, а что нужно скорректировать.</span></div>
+      <div class="step"><b data-i18n="s5t">В перспективе — ИИ-куратор</b><span data-i18n="s5x">Помогает корректировать программу и поддерживать движение к цели.</span></div>
     </div>
-    <p class="sub" style="margin-top:18px">Главное отличие от обычного каталога курсов — не количество материалов, а связь между целью, навыками, уровнем, временем, обучением и регулярной оценкой прогресса. Система не обещает трудоустройство: она помогает подготовиться к нему.</p>
+    <p class="sub" style="margin-top:18px" data-i18n="howNote">Главное отличие от обычного каталога курсов — не количество материалов, а связь между целью, навыками, уровнем, временем, обучением и регулярной оценкой прогресса. Система не обещает трудоустройство: она помогает подготовиться к нему.</p>
   </section>
 
   <section id="directions">
-    <h2>Направления развития</h2>
+    <h2 data-i18n="dirH2">Направления развития</h2>
     <div class="grid">
       <div class="card">
-        <span class="tag">Первый продукт</span>
+        <span class="tag" data-i18n="d1tag">Первый продукт</span>
         <h3>Dexter Typing</h3>
-        <p>Клавиатурный тренажёр, видеокурс и программа освоения слепого десятипальцевого метода печати.</p>
+        <p data-i18n="d1text">Клавиатурный тренажёр, видеокурс и программа освоения слепого десятипальцевого метода печати.</p>
       </div>
       <div class="card">
-        <span class="tag">Языки</span>
+        <span class="tag" data-i18n="d2tag">Языки</span>
         <h3>Dexter English</h3>
-        <p>Английский: оценка уровня, обучение, словарь, тренажёры и практика.</p>
+        <p data-i18n="d2text">Английский: оценка уровня, обучение, словарь, тренажёры и практика.</p>
       </div>
       <div class="card">
-        <span class="tag">Разработка</span>
+        <span class="tag" data-i18n="d3tag">Разработка</span>
         <h3>Dexter AI Engineering</h3>
-        <p>Программирование, работа с AI, создание агентов и практических проектов.</p>
+        <p data-i18n="d3text">Программирование, работа с AI, создание агентов и практических проектов.</p>
       </div>
       <div class="card">
-        <span class="tag">Привычки</span>
+        <span class="tag" data-i18n="d4tag">Привычки</span>
         <h3>Dexter Productivity</h3>
-        <p>Цели, привычки, планирование, ежедневная рутина и отслеживание прогресса.</p>
+        <p data-i18n="d4text">Цели, привычки, планирование, ежедневная рутина и отслеживание прогресса.</p>
       </div>
     </div>
-    <p class="sub" style="margin-top:18px">Это не четыре продукта, которые нужно делать одновременно: первое направление уже можно запускать, остальные наполняются постепенно.</p>
+    <p class="sub" style="margin-top:18px" data-i18n="dirNote">Это не четыре продукта, которые нужно делать одновременно: первое направление уже можно запускать, остальные наполняются постепенно.</p>
   </section>
 
   <section id="typing">
-    <h2>Первый учебный продукт: Dexter Typing</h2>
-    <p class="sub" style="margin-bottom:18px">Не просто тренажёр, а первая готовая программа развития навыка — с теми же принципами, что и вся экосистема.</p>
+    <h2 data-i18n="typH2">Первый учебный продукт: Dexter Typing</h2>
+    <p class="sub" style="margin-bottom:18px" data-i18n="typSub">Не просто тренажёр, а первая готовая программа развития навыка — с теми же принципами, что и вся экосистема.</p>
     <table>
-      <tr><th style="width:220px">Элемент</th><th>Содержание</th></tr>
-      <tr><td>Стартовый тест</td><td>Скорость печати, точность, знание расположения клавиш</td></tr>
-      <tr><td>Учебная программа</td><td>Последовательное освоение клавиш и пальцев</td></tr>
-      <tr><td>Тренажёр</td><td>Практика, скорость, точность, ошибки</td></tr>
-      <tr><td>Видеокурс</td><td>Объяснение техники и демонстрация упражнений</td></tr>
-      <tr><td>Результат</td><td>Сравнение стартовых и итоговых показателей</td></tr>
+      <tr><th style="width:220px" data-i18n="tblElem">Элемент</th><th data-i18n="tblContent">Содержание</th></tr>
+      <tr><td data-i18n="r1e">Стартовый тест</td><td data-i18n="r1c">Скорость печати, точность, знание расположения клавиш</td></tr>
+      <tr><td data-i18n="r2e">Учебная программа</td><td data-i18n="r2c">Последовательное освоение клавиш и пальцев</td></tr>
+      <tr><td data-i18n="r3e">Тренажёр</td><td data-i18n="r3c">Практика, скорость, точность, ошибки</td></tr>
+      <tr><td data-i18n="r4e">Видеокурс</td><td data-i18n="r4c">Объяснение техники и демонстрация упражнений</td></tr>
+      <tr><td data-i18n="r5e">Результат</td><td data-i18n="r5c">Сравнение стартовых и итоговых показателей</td></tr>
     </table>
-    <p class="sub" style="margin-top:16px">Продукт не зависит от будущей платформы: тренажёр развивается самостоятельно, а DES связывает его с другими инструментами и программами обучения.</p>
+    <p class="sub" style="margin-top:16px" data-i18n="typNote">Продукт не зависит от будущей платформы: тренажёр развивается самостоятельно, а DES связывает его с другими инструментами и программами обучения.</p>
   </section>
 
   <section id="roadmap">
-    <h2>Планы развития DES</h2>
+    <h2 data-i18n="rmH2">Планы развития DES</h2>
     <div class="steps">
-      <div class="step"><b>Этап 1 — Представление экосистемы</b><span>Публичная страница DES, описание концепции, презентация первого продукта, первые тестировщики.</span></div>
-      <div class="step"><b>Этап 2 — Первые образовательные программы</b><span>Курс Dexter Typing, программа по английскому, сбор обратной связи и измерение результатов.</span></div>
-      <div class="step"><b>Этап 3 — Единая система обучения</b><span>Личные профили, стартовые тесты, цели, программы, статистика прогресса и ежедневные задания.</span></div>
-      <div class="step"><b>Этап 4 — ИИ-кураторы</b><span>Подключение Hermes и специализированных агентов: подбор программы, адаптация нагрузки, поддержка движения к цели.</span></div>
+      <div class="step"><b data-i18n="g1t">Этап 1 — Представление экосистемы</b><span data-i18n="g1x">Публичная страница DES, описание концепции, презентация первого продукта, первые тестировщики.</span></div>
+      <div class="step"><b data-i18n="g2t">Этап 2 — Первые образовательные программы</b><span data-i18n="g2x">Курс Dexter Typing, программа по английскому, сбор обратной связи и измерение результатов.</span></div>
+      <div class="step"><b data-i18n="g3t">Этап 3 — Единая система обучения</b><span data-i18n="g3x">Личные профили, стартовые тесты, цели, программы, статистика прогресса и ежедневные задания.</span></div>
+      <div class="step"><b data-i18n="g4t">Этап 4 — ИИ-кураторы</b><span data-i18n="g4x">Подключение Hermes и специализированных агентов: подбор программы, адаптация нагрузки, поддержка движения к цели.</span></div>
     </div>
   </section>
 
   <section id="github">
-    <h2>Проект на GitHub</h2>
+    <h2 data-i18n="ghH2">Проект на GitHub</h2>
     <div class="repo">
-      <code>des.github.io<small>Главная страница экосистемы</small></code>
-      <code>DexterTyping<small>Тренажёр и учебные материалы</small></code>
-      <code>DexterEnglish<small>Английский и EnglishTutorBot</small></code>
-      <code>DexterAI<small>AI Engineering и агенты</small></code>
-      <code>.github<small>Правила, шаблоны Issues и PR</small></code>
+      <code>dexterecosystem.github.io<small data-i18n="rp1">Главная страница экосистемы</small></code>
+      <code>DexterTyping<small data-i18n="rp2">Тренажёр и учебные материалы</small></code>
+      <code>DexterEnglish<small data-i18n="rp3">Английский и EnglishTutorBot</small></code>
+      <code>DexterAI<small data-i18n="rp4">AI Engineering и агенты</small></code>
+      <code>.github<small data-i18n="rp5">Правила, шаблоны Issues и PR</small></code>
     </div>
-    <p class="sub" style="margin-top:16px">Организация открыта для участия: задачи, дорожная карта и предложения — в репозиториях.</p>
+    <p class="sub" style="margin-top:16px" data-i18n="ghNote">Организация открыта для участия: задачи, дорожная карта и предложения — в репозиториях.</p>
   </section>
 
   <section id="contacts">
-    <h2>Контакты</h2>
-    <p class="sub" style="margin-bottom:18px">Связаться, следить за проектами или присоединиться к сообществу.</p>
+    <h2 data-i18n="ctH2">Контакты</h2>
+    <p class="sub" style="margin-bottom:18px" data-i18n="ctSub">Связаться, следить за проектами или присоединиться к сообществу.</p>
     <div class="grid">
       <a class="card" href="https://github.com/DebuggerPlus">
         <h3>GitHub</h3>
         <p class="val">github.com/DebuggerPlus</p>
-        <p>Профиль разработчика — аккаунт создателя DES.</p>
+        <p data-i18n="c1p">Профиль разработчика — аккаунт создателя DES.</p>
       </a>
       <a class="card" href="https://github.com/DebuggerPlus?tab=repositories">
-        <h3>Репозитории</h3>
+        <h3 data-i18n="c2t">Репозитории</h3>
         <p class="val">github.com/DebuggerPlus?tab=repositories</p>
-        <p>Все проекты: приложения, агенты, эксперименты.</p>
+        <p data-i18n="c2p">Все проекты: приложения, агенты, эксперименты.</p>
       </a>
       <a class="card" href="https://t.me/+QqNnR7oTtGw5MmMx">
-        <h3>Telegram-чат</h3>
+        <h3 data-i18n="c3t">Telegram-чат</h3>
         <p class="val">t.me/+QqNnR7oTtGw5MmMx</p>
-        <p>Сообщество: обсуждение проектов и обучение.</p>
+        <p data-i18n="c3p">Сообщество: обсуждение проектов и обучение.</p>
       </a>
-      <a class="card" href="https://discord.gg/VET58PT6dJ">
-        <h3>Discord — русское сообщество</h3>
-        <p class="val">discord.gg/VET58PT6dJ</p>
-        <p>Общение и поддержка на русском языке.</p>
-      </a>
-      <a class="card" href="https://discord.gg/hMyK8P5nV7">
-        <h3>Discord — English community</h3>
-        <p class="val">discord.gg/hMyK8P5nV7</p>
-        <p>Practice and support in English.</p>
+      <a class="card" data-discord-link href="https://discord.gg/hMyK8P5nV7">
+        <h3>Discord</h3>
+        <p class="val"><span data-discord-url>discord.gg/hMyK8P5nV7</span></p>
+        <p data-i18n="c4p">Общение и поддержка участников экосистемы.</p>
       </a>
     </div>
   </section>
 
   <section>
     <div class="cta">
-      <p>Хочешь присоединиться к развитию экосистемы, стать первым тестировщиком Dexter Typing или предложить своё направление?</p>
-      <a class="btn" href="https://github.com/DexterEcoSystem">Сообщество на GitHub ↗</a>
+      <p data-i18n="ctaText">Хочешь присоединиться к развитию экосистемы, стать первым тестировщиком Dexter Typing или предложить своё направление?</p>
+      <a class="btn" href="https://github.com/DexterEcoSystem"><span data-i18n="ctaBtn">Сообщество на GitHub</span> ↗</a>
     </div>
   </section>
 
   <footer>
-    <span>Dexter Eco System · DES</span>
-    <span>От цели — к результату через индивидуальную систему развития.</span>
+    <span data-i18n="footLeft">Dexter Eco System · DES</span>
+    <span data-i18n="footRight">От цели — к результату через индивидуальную систему развития.</span>
   </footer>
 
 </div>
+
+<script>
+(() => {
+  "use strict";
+  const DISCORD = { ru: "https://discord.gg/VET58PT6dJ", en: "https://discord.gg/hMyK8P5nV7" };
+  const DISCORD_LABEL = { ru: "discord.gg/VET58PT6dJ", en: "discord.gg/hMyK8P5nV7" };
+
+  const DICT = {
+    en: {
+      title: "Dexter Eco System — from goal to result",
+      navHow: "How it works", navDirections: "Directions", navTyping: "Dexter Typing",
+      navRoadmap: "Roadmap", navContacts: "Contacts",
+      pill: "DES · Learning & Development Ecosystem",
+      lead: "From goal to result through a personal development system.",
+      heroSub: "Not a catalogue of courses, but an ecosystem that connects a person's goal, the skills it requires, their current level and available time — and turns that into daily actions with a measurable result.",
+      howH2: "How the system works",
+      s1t: "Global goal", s1x: "For example, getting a job as an AI Engineer.",
+      s2t: "Starting level assessment", s2x: "English, programming, AI, maths, experience.",
+      s3t: "Personal programme", s3x: "Courses, practice tools, projects and a study schedule.",
+      s4t: "Daily actions → progress → result", s4x: "Regular review of movement towards the goal shows what works and what needs adjusting.",
+      s5t: "Eventually — an AI curator", s5x: "Helps adjust the programme and keeps the movement towards the goal on track.",
+      howNote: "The main difference from an ordinary course catalogue is not the amount of material, but the link between goal, skills, level, time, learning and regular progress review. The system does not promise employment: it helps you prepare for it.",
+      dirH2: "Development directions",
+      d1tag: "First product", d1text: "Typing trainer, video course and a programme for mastering touch typing.",
+      d2tag: "Languages", d2text: "English: level assessment, learning, vocabulary, practice tools and conversation.",
+      d3tag: "Engineering", d3text: "Programming, working with AI, building agents and practical projects.",
+      d4tag: "Habits", d4text: "Goals, habits, planning, daily routine and progress tracking.",
+      dirNote: "These are not four products to build at once: the first direction can launch now, the rest are filled in gradually.",
+      typH2: "First learning product: Dexter Typing",
+      typSub: "Not just a trainer, but the first complete skill-development programme — following the same principles as the whole ecosystem.",
+      tblElem: "Element", tblContent: "What it includes",
+      r1e: "Starting test", r1c: "Typing speed, accuracy, knowledge of key positions",
+      r2e: "Learning programme", r2c: "Step-by-step mastery of keys and fingers",
+      r3e: "Trainer", r3c: "Practice, speed, accuracy, mistakes",
+      r4e: "Video course", r4c: "Technique explained and exercises demonstrated",
+      r5e: "Result", r5c: "Starting and final metrics compared",
+      typNote: "The product does not depend on a future platform: the trainer evolves on its own, while DES connects it to other tools and learning programmes.",
+      rmH2: "DES roadmap",
+      g1t: "Stage 1 — Presenting the ecosystem", g1x: "Public DES page, the concept described, first product presented, first testers.",
+      g2t: "Stage 2 — First learning programmes", g2x: "Dexter Typing course, English programme, feedback collection and measuring results.",
+      g3t: "Stage 3 — A single learning system", g3x: "Personal profiles, starting tests, goals, programmes, progress statistics and daily tasks.",
+      g4t: "Stage 4 — AI curators", g4x: "Connecting Hermes and specialised agents: programme selection, load adaptation, support on the way to the goal.",
+      ghH2: "The project on GitHub",
+      rp1: "Ecosystem landing page", rp2: "Trainer and learning materials",
+      rp3: "English and EnglishTutorBot", rp4: "AI Engineering and agents",
+      rp5: "Guidelines, issue and PR templates",
+      ghNote: "The organisation is open to contributors: tasks, roadmap and proposals live in the repositories.",
+      ctH2: "Contacts", ctSub: "Get in touch, follow the projects or join the community.",
+      c1p: "Developer profile — the account of the DES creator.",
+      c2t: "Repositories", c2p: "All projects: applications, agents, experiments.",
+      c3t: "Telegram chat", c3p: "Community: project discussions and learning.",
+      c4p: "Chat and support for ecosystem members.",
+      ctaText: "Want to join the development of the ecosystem, become one of the first Dexter Typing testers or suggest your own direction?",
+      ctaBtn: "Community on GitHub",
+      footLeft: "Dexter Eco System · DES",
+      footRight: "From goal to result through a personal development system."
+    },
+    ru: {
+      title: "Dexter Eco System — от цели к результату",
+      navHow: "Как работает", navDirections: "Направления", navTyping: "Dexter Typing",
+      navRoadmap: "Этапы", navContacts: "Контакты",
+      pill: "DES · Экосистема обучения и развития",
+      lead: "От цели — к результату через индивидуальную систему развития.",
+      heroSub: "Не каталог курсов, а экосистема, которая связывает цель человека, нужные для неё навыки, его текущий уровень и доступное время — и превращает это в ежедневные действия с измеримым результатом.",
+      howH2: "Как работает система",
+      s1t: "Глобальная цель", s1x: "Например, получить работу AI Engineer.",
+      s2t: "Оценка стартового уровня", s2x: "Английский, программирование, AI, математика, опыт.",
+      s3t: "Индивидуальная программа", s3x: "Курсы, тренажёры, проекты и расписание занятий.",
+      s4t: "Ежедневные действия → прогресс → результат", s4x: "Регулярная оценка движения к цели показывает, что работает, а что нужно скорректировать.",
+      s5t: "В перспективе — ИИ-куратор", s5x: "Помогает корректировать программу и поддерживать движение к цели.",
+      howNote: "Главное отличие от обычного каталога курсов — не количество материалов, а связь между целью, навыками, уровнем, временем, обучением и регулярной оценкой прогресса. Система не обещает трудоустройство: она помогает подготовиться к нему.",
+      dirH2: "Направления развития",
+      d1tag: "Первый продукт", d1text: "Клавиатурный тренажёр, видеокурс и программа освоения слепого десятипальцевого метода печати.",
+      d2tag: "Языки", d2text: "Английский: оценка уровня, обучение, словарь, тренажёры и практика.",
+      d3tag: "Разработка", d3text: "Программирование, работа с AI, создание агентов и практических проектов.",
+      d4tag: "Привычки", d4text: "Цели, привычки, планирование, ежедневная рутина и отслеживание прогресса.",
+      dirNote: "Это не четыре продукта, которые нужно делать одновременно: первое направление уже можно запускать, остальные наполняются постепенно.",
+      typH2: "Первый учебный продукт: Dexter Typing",
+      typSub: "Не просто тренажёр, а первая готовая программа развития навыка — с теми же принципами, что и вся экосистема.",
+      tblElem: "Элемент", tblContent: "Содержание",
+      r1e: "Стартовый тест", r1c: "Скорость печати, точность, знание расположения клавиш",
+      r2e: "Учебная программа", r2c: "Последовательное освоение клавиш и пальцев",
+      r3e: "Тренажёр", r3c: "Практика, скорость, точность, ошибки",
+      r4e: "Видеокурс", r4c: "Объяснение техники и демонстрация упражнений",
+      r5e: "Результат", r5c: "Сравнение стартовых и итоговых показателей",
+      typNote: "Продукт не зависит от будущей платформы: тренажёр развивается самостоятельно, а DES связывает его с другими инструментами и программами обучения.",
+      rmH2: "Планы развития DES",
+      g1t: "Этап 1 — Представление экосистемы", g1x: "Публичная страница DES, описание концепции, презентация первого продукта, первые тестировщики.",
+      g2t: "Этап 2 — Первые образовательные программы", g2x: "Курс Dexter Typing, программа по английскому, сбор обратной связи и измерение результатов.",
+      g3t: "Этап 3 — Единая система обучения", g3x: "Личные профили, стартовые тесты, цели, программы, статистика прогресса и ежедневные задания.",
+      g4t: "Этап 4 — ИИ-кураторы", g4x: "Подключение Hermes и специализированных агентов: подбор программы, адаптация нагрузки, поддержка движения к цели.",
+      ghH2: "Проект на GitHub",
+      rp1: "Главная страница экосистемы", rp2: "Тренажёр и учебные материалы",
+      rp3: "Английский и EnglishTutorBot", rp4: "AI Engineering и агенты",
+      rp5: "Правила, шаблоны Issues и PR",
+      ghNote: "Организация открыта для участия: задачи, дорожная карта и предложения — в репозиториях.",
+      ctH2: "Контакты", ctSub: "Связаться, следить за проектами или присоединиться к сообществу.",
+      c1p: "Профиль разработчика — аккаунт создателя DES.",
+      c2t: "Репозитории", c2p: "Все проекты: приложения, агенты, эксперименты.",
+      c3t: "Telegram-чат", c3p: "Сообщество: обсуждение проектов и обучение.",
+      c4p: "Общение и поддержка участников экосистемы.",
+      ctaText: "Хочешь присоединиться к развитию экосистемы, стать первым тестировщиком Dexter Typing или предложить своё направление?",
+      ctaBtn: "Сообщество на GitHub",
+      footLeft: "Dexter Eco System · DES",
+      footRight: "От цели — к результату через индивидуальную систему развития."
+    }
+  };
+
+  const LANG_KEY = "dp-lang";
+  let lang = "ru";
+
+  function applyLang(next) {
+    lang = next === "en" ? "en" : "ru";
+    const t = DICT[lang];
+    document.documentElement.lang = lang;
+    document.title = t.title;
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const v = t[el.getAttribute("data-i18n")];
+      if (v != null) el.textContent = v;
+    });
+    document.querySelectorAll("[data-discord-link]").forEach(a => { a.href = DISCORD[lang]; });
+    document.querySelectorAll("[data-discord-url]").forEach(el => { el.textContent = DISCORD_LABEL[lang]; });
+    document.querySelectorAll("[data-lang-btn]").forEach(b => {
+      const on = b.dataset.langBtn === lang;
+      b.classList.toggle("active", on);
+      b.setAttribute("aria-pressed", String(on));
+    });
+    try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+  }
+
+  document.querySelectorAll("[data-lang-btn]").forEach(b =>
+    b.addEventListener("click", () => applyLang(b.dataset.langBtn)));
+
+  const p = new URLSearchParams(location.search).get("lang");
+  let initial = (p === "ru" || p === "en") ? p : null;
+  if (!initial) { try { initial = localStorage.getItem(LANG_KEY); } catch (e) { initial = null; } }
+  if (initial !== "ru" && initial !== "en") {
+    initial = (navigator.language || "en").toLowerCase().startsWith("ru") ? "ru" : "en";
+  }
+  applyLang(initial);
+})();
+</script>
 </body>
 </html>
