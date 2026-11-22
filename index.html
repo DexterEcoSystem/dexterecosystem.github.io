@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dexter Eco System — от цели к результату</title>
+<meta name="description" content="Dexter Eco System — экосистема обучения: оценка уровня, индивидуальная программа, ежедневные действия и измеримый результат.">
+<style>
+  :root { color-scheme: dark; --bg:#0d1117; --card:#161b22; --line:#30363d; --txt:#e6edf3; --body:#adbac7; --muted:#8b949e; --link:#58a6ff; --green:#7ee787; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(1200px 600px at 20% -10%, #1f6feb33, transparent),
+                radial-gradient(900px 500px at 100% 0%, #8957e533, transparent), var(--bg);
+    color: var(--txt); line-height: 1.65;
+  }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { width: min(1040px, 100%); margin: 0 auto; padding: 56px 24px 40px; }
+  header.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 48px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: .02em; }
+  .brand .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px #7ee787aa; }
+  nav a { color: var(--muted); font-size: 14px; margin-left: 18px; }
+  nav a:hover { color: var(--txt); }
+  .pill { display: inline-block; font-size: 13px; color: var(--green); background: #23863622;
+          border: 1px solid #23863666; padding: 4px 12px; border-radius: 999px; }
+  h1 { font-size: clamp(30px, 5vw, 46px); line-height: 1.15; margin: 18px 0 10px; letter-spacing: -0.02em; }
+  .lead { font-size: 19px; color: var(--body); max-width: 760px; margin: 0 0 8px; }
+  .sub { color: var(--muted); max-width: 760px; }
+  section { margin-top: 64px; scroll-margin-top: 24px; }
+  h2 { font-size: 24px; margin: 0 0 18px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px 22px 20px;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .card:hover { border-color: #4b5563; transform: translateY(-2px); }
+  .card h3 { margin: 0 0 8px; font-size: 18px; }
+  .card p { margin: 0; color: var(--body); font-size: 15px; }
+  .card .tag { display: inline-block; font-size: 12px; color: var(--muted); border: 1px solid var(--line);
+               border-radius: 999px; padding: 2px 9px; margin-bottom: 12px; }
+  .steps { display: grid; gap: 14px; counter-reset: s; }
+  .step { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px 18px 62px; position: relative; }
+  .step::before {
+    counter-increment: s; content: counter(s);
+    position: absolute; left: 20px; top: 19px; width: 26px; height: 26px; border-radius: 50%;
+    display: grid; place-items: center; font-size: 13px; color: var(--green);
+    background: #23863622; border: 1px solid #23863666;
+  }
+  .step b { display: block; margin-bottom: 2px; }
+  .step span { color: var(--body); font-size: 15px; }
+  table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  th, td { text-align: left; padding: 13px 18px; border-bottom: 1px solid var(--line); font-size: 15px; }
+  th { color: var(--txt); background: #1c232c; font-weight: 600; }
+  td { color: var(--body); }
+  tr:last-child td { border-bottom: none; }
+  .repo { display: flex; flex-wrap: wrap; gap: 10px; }
+  .repo code { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; font-size: 14px; color: var(--txt); }
+  .repo code small { display: block; color: var(--muted); font-family: inherit; font-size: 12.5px; }
+  .cta { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 28px; display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; }
+  .cta p { margin: 0; color: var(--body); max-width: 560px; }
+  .btn { display: inline-block; background: #238636; color: #fff; border-radius: 10px; padding: 11px 18px; font-weight: 600; font-size: 15px; }
+  .btn:hover { background: #2ea043; text-decoration: none; }
+  footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted);
+           display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+  ul.plain { color: var(--body); padding-left: 20px; }
+  ul.plain li { margin: 6px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand"><span class="dot"></span> Dexter Eco System</div>
+    <nav>
+      <a href="#how">Как работает</a>
+      <a href="#directions">Направления</a>
+      <a href="#typing">Dexter Typing</a>
+      <a href="#roadmap">Этапы</a>
+    </nav>
+  </header>
+
+  <span class="pill">DES · Learning &amp; Development Ecosystem</span>
+  <h1>Dexter Eco System</h1>
+  <p class="lead">A system for achieving meaningful goals. От цели — к результату через индивидуальную систему развития.</p>
+  <p class="sub">Не каталог курсов, а экосистема, которая связывает цель человека, нужные для неё навыки, его текущий уровень и доступное время — и превращает это в ежедневные действия с измеримым результатом.</p>
+
+  <section id="how">
+    <h2>Как работает система</h2>
+    <div class="steps">
+      <div class="step"><b>Глобальная цель</b><span>Например, получить работу AI Engineer.</span></div>
+      <div class="step"><b>Оценка стартового уровня</b><span>Английский, программирование, AI, математика, опыт.</span></div>
+      <div class="step"><b>Индивидуальная программа</b><span>Курсы, тренажёры, проекты и расписание занятий.</span></div>
+      <div class="step"><b>Ежедневные действия → прогресс → результат</b><span>Регулярная оценка движения к цели показывает, что работает, а что нужно скорректировать.</span></div>
+      <div class="step"><b>В перспективе — ИИ-куратор</b><span>Помогает корректировать программу и поддерживать движение к цели.</span></div>
+    </div>
+    <p class="sub" style="margin-top:18px">Главное отличие от обычного каталога курсов — не количество материалов, а связь между целью, навыками, уровнем, временем, обучением и регулярной оценкой прогресса. Система не обещает трудоустройство: она помогает подготовиться к нему.</p>
+  </section>
+
+  <section id="directions">
+    <h2>Направления развития</h2>
+    <div class="grid">
+      <div class="card">
+        <span class="tag">Первый продукт</span>
+        <h3>Dexter Typing</h3>
+        <p>Клавиатурный тренажёр, видеокурс и программа освоения слепого десятипальцевого метода печати.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Языки</span>
+        <h3>Dexter English</h3>
+        <p>Английский: оценка уровня, обучение, словарь, тренажёры и практика.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Разработка</span>
+        <h3>Dexter AI Engineering</h3>
+        <p>Программирование, работа с AI, создание агентов и практических проектов.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Привычки</span>
+        <h3>Dexter Productivity</h3>
+        <p>Цели, привычки, планирование, ежедневная рутина и отслеживание прогресса.</p>
+      </div>
+    </div>
+    <p class="sub" style="margin-top:18px">Это не четыре продукта, которые нужно делать одновременно: первое направление уже можно запускать, остальные наполняются постепенно.</p>
+  </section>
+
+  <section id="typing">
+    <h2>Первый учебный продукт: Dexter Typing</h2>
+    <p class="sub" style="margin-bottom:18px">Не просто тренажёр, а первая готовая программа развития навыка — с теми же принципами, что и вся экосистема.</p>
+    <table>
+      <tr><th style="width:220px">Элемент</th><th>Содержание</th></tr>
+      <tr><td>Стартовый тест</td><td>Скорость печати, точность, знание расположения клавиш</td></tr>
+      <tr><td>Учебная программа</td><td>Последовательное освоение клавиш и пальцев</td></tr>
+      <tr><td>Тренажёр</td><td>Практика, скорость, точность, ошибки</td></tr>
+      <tr><td>Видеокурс</td><td>Объяснение техники и демонстрация упражнений</td></tr>
+      <tr><td>Результат</td><td>Сравнение стартовых и итоговых показателей</td></tr>
+    </table>
+    <p class="sub" style="margin-top:16px">Продукт не зависит от будущей платформы: тренажёр развивается самостоятельно, а DES связывает его с другими инструментами и программами обучения.</p>
+  </section>
+
+  <section id="roadmap">
+    <h2>Планы развития DES</h2>
+    <div class="steps">
+      <div class="step"><b>Этап 1 — Представление экосистемы</b><span>Публичная страница DES, описание концепции, презентация первого продукта, первые тестировщики.</span></div>
+      <div class="step"><b>Этап 2 — Первые образовательные программы</b><span>Курс Dexter Typing, программа по английскому, сбор обратной связи и измерение результатов.</span></div>
+      <div class="step"><b>Этап 3 — Единая система обучения</b><span>Личные профили, стартовые тесты, цели, программы, статистика прогресса и ежедневные задания.</span></div>
+      <div class="step"><b>Этап 4 — ИИ-кураторы</b><span>Подключение Hermes и специализированных агентов: подбор программы, адаптация нагрузки, поддержка движения к цели.</span></div>
+    </div>
+  </section>
+
+  <section id="github">
+    <h2>Проект на GitHub</h2>
+    <div class="repo">
+      <code>des.github.io<small>Главная страница экосистемы</small></code>
+      <code>DexterTyping<small>Тренажёр и учебные материалы</small></code>
+      <code>DexterEnglish<small>Английский и EnglishTutorBot</small></code>
+      <code>DexterAI<small>AI Engineering и агенты</small></code>
+      <code>.github<small>Правила, шаблоны Issues и PR</small></code>
+    </div>
+    <p class="sub" style="margin-top:16px">Организация открыта для участия: задачи, дорожная карта и предложения — в репозиториях.</p>
+  </section>
+
+  <section>
+    <div class="cta">
+      <p>Хочешь присоединиться к развитию экосистемы, стать первым тестировщиком Dexter Typing или предложить своё направление?</p>
+      <a class="btn" href="https://github.com/DexterEcoSystem">Сообщество на GitHub ↗</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>Dexter Eco System · DES</span>
+    <span>От цели — к результату через индивидуальную систему развития.</span>
+  </footer>
+
+</div>
+</body>
+</html>
