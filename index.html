@@ -40,6 +40,10 @@
   .card p { margin: 0; color: var(--body); font-size: 15px; }
   .card .tag { display: inline-block; font-size: 12px; color: var(--muted); border: 1px solid var(--line);
                border-radius: 999px; padding: 2px 9px; margin-bottom: 12px; }
+  a.card { display: block; color: inherit; text-decoration: none; }
+  a.card:hover { text-decoration: none; }
+  a.card .val { color: var(--link); font-size: 15px; }
+  a.card h3::after { content: " ↗"; color: var(--muted); font-size: 14px; }
   .steps { display: grid; gap: 14px; counter-reset: s; }
   .step { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px 18px 62px; position: relative; }
   .step::before {
@@ -78,6 +82,7 @@
       <a href="#directions">Направления</a>
       <a href="#typing">Dexter Typing</a>
       <a href="#roadmap">Этапы</a>
+      <a href="#contacts">Контакты</a>
     </nav>
   </header>
 
@@ -159,6 +164,38 @@
       <code>.github<small>Правила, шаблоны Issues и PR</small></code>
     </div>
     <p class="sub" style="margin-top:16px">Организация открыта для участия: задачи, дорожная карта и предложения — в репозиториях.</p>
+  </section>
+
+  <section id="contacts">
+    <h2>Контакты</h2>
+    <p class="sub" style="margin-bottom:18px">Связаться, следить за проектами или присоединиться к сообществу.</p>
+    <div class="grid">
+      <a class="card" href="https://github.com/DebuggerPlus">
+        <h3>GitHub</h3>
+        <p class="val">github.com/DebuggerPlus</p>
+        <p>Профиль разработчика — аккаунт создателя DES.</p>
+      </a>
+      <a class="card" href="https://github.com/DebuggerPlus?tab=repositories">
+        <h3>Репозитории</h3>
+        <p class="val">github.com/DebuggerPlus?tab=repositories</p>
+        <p>Все проекты: приложения, агенты, эксперименты.</p>
+      </a>
+      <a class="card" href="https://t.me/+QqNnR7oTtGw5MmMx">
+        <h3>Telegram-чат</h3>
+        <p class="val">t.me/+QqNnR7oTtGw5MmMx</p>
+        <p>Сообщество: обсуждение проектов и обучение.</p>
+      </a>
+      <a class="card" href="https://discord.gg/VET58PT6dJ">
+        <h3>Discord — русское сообщество</h3>
+        <p class="val">discord.gg/VET58PT6dJ</p>
+        <p>Общение и поддержка на русском языке.</p>
+      </a>
+      <a class="card" href="https://discord.gg/hMyK8P5nV7">
+        <h3>Discord — English community</h3>
+        <p class="val">discord.gg/hMyK8P5nV7</p>
+        <p>Practice and support in English.</p>
+      </a>
+    </div>
   </section>
 
   <section>
