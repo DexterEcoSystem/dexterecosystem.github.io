@@ -68,6 +68,9 @@
   .repo { display: flex; flex-wrap: wrap; gap: 10px; }
   .repo code { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; font-size: 14px; color: var(--txt); }
   .repo code small { display: block; color: var(--muted); font-family: inherit; font-size: 12.5px; }
+  .repo code a { display: block; color: inherit; }
+  .repo code a:hover { text-decoration: none; }
+  .repo code a:hover small { color: var(--body); }
   .cta { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 28px; display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; }
   .cta p { margin: 0; color: var(--body); max-width: 560px; }
   .btn { display: inline-block; background: #238636; color: #fff; border-radius: 10px; padding: 11px 18px; font-weight: 600; font-size: 15px; }
@@ -171,39 +174,20 @@
 
   <section id="github">
     <h2 data-i18n="ghH2">Проект на GitHub</h2>
-    <div class="repo">
-      <code>dexterecosystem.github.io<small data-i18n="rp1">Главная страница экосистемы</small></code>
-      <code>DexterTyping<small data-i18n="rp2">Тренажёр и учебные материалы</small></code>
-      <code>DexterEnglish<small data-i18n="rp3">Английский и EnglishTutorBot</small></code>
-      <code>DexterAI<small data-i18n="rp4">AI Engineering и агенты</small></code>
-      <code>.github<small data-i18n="rp5">Правила, шаблоны Issues и PR</small></code>
+    <div class="repo" id="repoList">
+      <code><a href="https://github.com/DexterEcoSystem/dexterecosystem.github.io" target="_blank" rel="noopener noreferrer">dexterecosystem.github.io<small data-i18n="rp1">Главная страница экосистемы</small></a></code>
     </div>
-    <p class="sub" style="margin-top:16px" data-i18n="ghNote">Организация открыта для участия: задачи, дорожная карта и предложения — в репозиториях.</p>
+    <p class="sub" style="margin-top:16px" data-i18n="ghNote">Репозитории экосистемы публикуются в организации Dexter Eco System на GitHub — названия и описания подтягиваются оттуда.</p>
   </section>
 
   <section id="contacts">
     <h2 data-i18n="ctH2">Контакты</h2>
     <p class="sub" style="margin-bottom:18px" data-i18n="ctSub">Связаться, следить за проектами или присоединиться к сообществу.</p>
     <div class="grid">
-      <a class="card" href="https://github.com/DebuggerPlus">
-        <h3>GitHub</h3>
-        <p class="val">github.com/DebuggerPlus</p>
-        <p data-i18n="c1p">Профиль разработчика — аккаунт создателя DES.</p>
-      </a>
-      <a class="card" href="https://github.com/DebuggerPlus?tab=repositories">
-        <h3 data-i18n="c2t">Репозитории</h3>
-        <p class="val">github.com/DebuggerPlus?tab=repositories</p>
-        <p data-i18n="c2p">Все проекты: приложения, агенты, эксперименты.</p>
-      </a>
-      <a class="card" href="https://debuggerplus.github.io/">
-        <h3 data-i18n="c5t">Сайт</h3>
-        <p class="val">debuggerplus.github.io</p>
-        <p data-i18n="c5p">Все публичные репозитории и проекты разработчика.</p>
-      </a>
-      <a class="card" href="https://debuggerplus.github.io/portfolio/">
-        <h3 data-i18n="c6t">Портфолио</h3>
-        <p class="val">debuggerplus.github.io/portfolio/</p>
-        <p data-i18n="c6p">О разработчике, проектах и опыте.</p>
+      <a class="card" href="https://github.com/DexterEcoSystem">
+        <h3 data-i18n="c1t">GitHub</h3>
+        <p class="val">github.com/DexterEcoSystem</p>
+        <p data-i18n="c1p">Организация Dexter Eco System: репозитории, код и материалы экосистемы.</p>
       </a>
       <a class="card" href="https://t.me/+QqNnR7oTtGw5MmMx">
         <h3 data-i18n="c3t">Telegram-чат</h3>
@@ -274,15 +258,10 @@
       g3t: "Stage 3 — A single learning system", g3x: "Personal profiles, starting tests, goals, programmes, progress statistics and daily tasks.",
       g4t: "Stage 4 — AI curators", g4x: "Connecting Hermes and specialised agents: programme selection, load adaptation, support on the way to the goal.",
       ghH2: "The project on GitHub",
-      rp1: "Ecosystem landing page", rp2: "Trainer and learning materials",
-      rp3: "English and EnglishTutorBot", rp4: "AI Engineering and agents",
-      rp5: "Guidelines, issue and PR templates",
-      ghNote: "The organisation is open to contributors: tasks, roadmap and proposals live in the repositories.",
+      rp1: "Ecosystem landing page",
+      ghNote: "Repositories of the ecosystem live in the Dexter Eco System organisation on GitHub — names and descriptions are pulled from there.",
       ctH2: "Contacts", ctSub: "Get in touch, follow the projects or join the community.",
-      c1p: "Developer profile — the account of the DES creator.",
-      c2t: "Repositories", c2p: "All projects: applications, agents, experiments.",
-      c5t: "Website", c5p: "All public repositories and projects of the developer.",
-      c6t: "Portfolio", c6p: "About the developer, the projects and the experience.",
+      c1t: "GitHub", c1p: "Dexter Eco System organisation: repositories, code and materials of the ecosystem.",
       c3t: "Telegram chat", c3p: "Community: project discussions and learning.",
       c4p: "Chat and support for ecosystem members.",
       ctaText: "Want to join the development of the ecosystem, become one of the first Dexter Typing testers or suggest your own direction?",
@@ -325,15 +304,10 @@
       g3t: "Этап 3 — Единая система обучения", g3x: "Личные профили, стартовые тесты, цели, программы, статистика прогресса и ежедневные задания.",
       g4t: "Этап 4 — ИИ-кураторы", g4x: "Подключение Hermes и специализированных агентов: подбор программы, адаптация нагрузки, поддержка движения к цели.",
       ghH2: "Проект на GitHub",
-      rp1: "Главная страница экосистемы", rp2: "Тренажёр и учебные материалы",
-      rp3: "Английский и EnglishTutorBot", rp4: "AI Engineering и агенты",
-      rp5: "Правила, шаблоны Issues и PR",
-      ghNote: "Организация открыта для участия: задачи, дорожная карта и предложения — в репозиториях.",
+      rp1: "Главная страница экосистемы",
+      ghNote: "Репозитории экосистемы живут в организации Dexter Eco System на GitHub — названия и описания подтягиваются оттуда.",
       ctH2: "Контакты", ctSub: "Связаться, следить за проектами или присоединиться к сообществу.",
-      c1p: "Профиль разработчика — аккаунт создателя DES.",
-      c2t: "Репозитории", c2p: "Все проекты: приложения, агенты, эксперименты.",
-      c5t: "Сайт", c5p: "Все публичные репозитории и проекты разработчика.",
-      c6t: "Портфолио", c6p: "О разработчике, проектах и опыте.",
+      c1t: "GitHub", c1p: "Организация Dexter Eco System: репозитории, код и материалы экосистемы.",
       c3t: "Telegram-чат", c3p: "Сообщество: обсуждение проектов и обучение.",
       c4p: "Общение и поддержка участников экосистемы.",
       ctaText: "Хочешь присоединиться к развитию экосистемы, стать первым тестировщиком Dexter Typing или предложить своё направление?",
@@ -345,6 +319,24 @@
 
   const LANG_KEY = "dp-lang";
   let lang = "ru";
+
+  const ORG = "DexterEcoSystem";
+  const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c =>
+    ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+
+  function renderRepos(list) {
+    const box = document.getElementById("repoList");
+    if (!box || !list.length) return;
+    box.innerHTML = list.map(r =>
+      `<code><a href="${esc(r.html_url)}" target="_blank" rel="noopener noreferrer">${esc(r.name)}<small>${esc(r.description || (lang === "ru" ? "Репозиторий экосистемы" : "Ecosystem repository"))}</small></a></code>`
+    ).join("");
+  }
+
+  fetch(`https://api.github.com/orgs/${ORG}/repos?per_page=100&sort=updated`)
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(list => list.filter(r => !r.fork && !r.archived))
+    .then(renderRepos)
+    .catch(() => {});
 
   function applyLang(next) {
     lang = next === "en" ? "en" : "ru";
